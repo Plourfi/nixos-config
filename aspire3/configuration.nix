@@ -46,14 +46,14 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+  #services.pulseaudio.enable = false;
+  #security.rtkit.enable = true;
+  #services.pipewire = {
+  #  enable = true;
+  #  alsa.enable = true;
+  #  alsa.support32Bit = true;
+  #  pulse.enable = true;
+  #};
 
   # Define a user account
   users.users.astrea = {
@@ -74,14 +74,15 @@
     wget
     eza
     git
+    obsidian
   ];
 
   # Install nerd fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.hack
-    nerd-fonts.droid-sans-mono
-  ];
+  # fonts.packages = with pkgs; [
+   # nerd-fonts.fira-code
+   # nerd-fonts.hack
+   # nerd-fonts.droid-sans-mono
+  # ];
 
   # Enable fontconfig if necessary (optional)
   # fonts.fontconfig.enable = true;
