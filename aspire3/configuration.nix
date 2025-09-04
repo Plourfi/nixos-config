@@ -79,23 +79,41 @@
     eza
     git
     obsidian
+    discord
+    protonvpn-gui
+#    nh
+    nix-output-monitor
+  ];
+
+#  programs.nh = {
+#    enable = true;
+#    clean.enable = true;
+#    clean.extraArgs = "--keep-since 4d --keep 3";
+#    flake = "/home/user/my-nixos-config"; # sets NH_OS_FLAKE variable for you
+#  };
+
+
+  # Enable fontconfig if necessary (optional)
+  fonts.fontconfig.enable = true;
+  # fonts.fontconfig.defaultFonts.emoji = [ "nerd-fonts" ];
+
+  # Install nerd fonts
+  fonts.packages = with pkgs; [
+    fira-code
+#    nerdfonts.hack
+#    nerdfonts.droid-sans-mono
   ];
 
 
-
-  # Install nerd fonts
-  # fonts.packages = with pkgs; [
-   # nerd-fonts.fira-code
-   # nerd-fonts.hack
-   # nerd-fonts.droid-sans-mono
-  # ];
-
-  # Enable fontconfig if necessary (optional)
-  # fonts.fontconfig.enable = true;
-  # fonts.fontconfig.defaultFonts.emoji = [ "nerd-fonts" ];
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Set the system state version
   system.stateVersion = "25.05";
+
+ # Enable 16Go of swap memory
+  swapDevices = [{
+    device = "/swapfile";
+    size = 16 * 1024; # 16GB
+  }];
 }
