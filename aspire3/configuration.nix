@@ -67,6 +67,10 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
 
   # Install some basic system packages
   environment.systemPackages = with pkgs; [
@@ -76,6 +80,8 @@
     git
     obsidian
   ];
+
+
 
   # Install nerd fonts
   # fonts.packages = with pkgs; [
