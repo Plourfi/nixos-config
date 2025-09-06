@@ -81,7 +81,7 @@
     obsidian
     discord
     protonvpn-gui
-#    nh
+    nh
     nix-output-monitor
   ];
 
@@ -93,19 +93,18 @@
 #  };
 
 
+
+
   # Enable fontconfig if necessary (optional)
   fonts.fontconfig.enable = true;
   # fonts.fontconfig.defaultFonts.emoji = [ "nerd-fonts" ];
 
   # Install nerd fonts
   fonts.packages = with pkgs; [
-    fira-code #nerd-fonts
-    #nerd-fonts.fira-code #nerd-fonts
-    # hack #nerd-fonts?
-#    droid-sans-mono
-#    nerd-fonts-droid-sans-mono #nerd-fonts
-#    nerdfonts.droidSansMono #nerd-fonts
-#    nerdfonts.droid-sans-mono #nerd-fonts
+    #nerd-fonts for eza icons
+    nerd-fonts.fira-code #nerd-fonts
+    nerd-fonts.hack #nerd-fonts
+    nerd-fonts.droid-sans-mono #nerd-fonts
   ];
 
 

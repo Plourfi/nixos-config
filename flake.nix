@@ -47,7 +47,7 @@
     nixosModules = import ./modules/nixos;
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
+    #homeManagerModules = import ./modules/home-manager; # Useless and bearking flake if empty
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname' #Should it be the hostname or just a key?
@@ -66,12 +66,18 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       # username@hostname
-      "astrea@nixtrea" = home-manager.lib.homeManagerConfiguration {
+      # "astrea@nixtrea" = home-manager.lib.homeManagerConfiguration {
+      "nixtrea" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main home-manager configuration file <
           ./home-manager/home.nix
+#          {
+#            home.username = "astrea";
+#            home.homeDirectory = "/home/astrea";
+#            home.stateVersion = "23.11";
+#          }
         ];
       };
     };
