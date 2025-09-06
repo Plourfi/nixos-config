@@ -10,7 +10,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixtrea"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -99,9 +99,13 @@
 
   # Install nerd fonts
   fonts.packages = with pkgs; [
-    fira-code
-#    nerdfonts.hack
-#    nerdfonts.droid-sans-mono
+    fira-code #nerd-fonts
+    #nerd-fonts.fira-code #nerd-fonts
+    # hack #nerd-fonts?
+#    droid-sans-mono
+#    nerd-fonts-droid-sans-mono #nerd-fonts
+#    nerdfonts.droidSansMono #nerd-fonts
+#    nerdfonts.droid-sans-mono #nerd-fonts
   ];
 
 
@@ -111,7 +115,9 @@
   # Set the system state version
   system.stateVersion = "25.05";
 
+
  # Enable 16Go of swap memory
+ # Should be required/is better for rebuild system
   swapDevices = [{
     device = "/swapfile";
     size = 16 * 1024; # 16GB

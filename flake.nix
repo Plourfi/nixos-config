@@ -1,9 +1,9 @@
 {
-  description = "Your new nix config";
+  description = "Astrea's NixOS config";
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -25,9 +25,9 @@
     systems = [
       "aarch64-linux" # Need to check
       "i686-linux" # Need to check
-      "x86_64-linux"
-      "aarch64-darwin" # Mac OS
-      "x86_64-darwin" # Mac OS
+      "x86_64-linux" # Should be regular architecture?
+      #"aarch64-darwin" # Mac OS
+      #"x86_64-darwin" # Mac OS
     ];
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
@@ -50,10 +50,10 @@
     homeManagerModules = import ./modules/home-manager;
 
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
+    # Available through 'nixos-rebuild --flake .#your-hostname' #Should it be the hostname or just a key?
     nixosConfigurations = {
-      # FIXME replace with your hostname
-      nixos = nixpkgs.lib.nixosSystem {
+      # hostname
+      nixtrea = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
@@ -65,8 +65,8 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      # FIXME replace with your username@hostname
-      "astrea@nixos" = home-manager.lib.homeManagerConfiguration {
+      # username@hostname
+      "astrea@nixtrea" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
