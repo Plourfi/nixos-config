@@ -56,34 +56,41 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "25.05";
     packages = with pkgs; [ # Needs to be broken down into various modules. Target activate part of the configuration depending on the system (e.g. NixOS, wsl with hm, ...) and it's uses (e.g. home, cyber, work, ...=
-      cowsay
+      # CLI tools
+      cowsay # Test pkgs
+      wget # Url fetching
+      curl # Url fetching
+      lynx # Light web browsing
+      jq # 
+      tree # File listing in a tree representation
+      hyfetch # Sys ressources
+      btop # Sys ressources
+
+      #fzf # Better history command # present below in programs.fzf 
+      #eza # Better ls with icons, needs fonts (nerd-fonts installed in nix config) # present below
+
+      # Shell
+      # zhs
+
+      # Softwares
       discord
-      wget
-      curl
-      lynx
-      jq
-      tree
-      hyfetch
-      #fzf
-
       steam
-
-      btop
+      # friture # RT audio analyzer with spectrum
     ];
 
   };
   programs.eza = {
     enable = true;
-    #icons = "auto";
+    #icons = "auto"; # Check which one is better AKA read the code
     icons = "always";
     colors = "auto";
   };
 
-  programs.fzf = {
+  programs.fzf = { # Check why it would be better to declare this program here or above and what are the implications of a double entry in home.packages
     enable = true;
   };
 
-  programs.bash = {
+  programs.bash = { # Verify usefullness especially with another terminal
     enable = true;
   };
 
