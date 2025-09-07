@@ -55,12 +55,20 @@
     homeDirectory = "/home/astrea";
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "25.05";
-    packages = with pkgs; [
+    packages = with pkgs; [ # Needs to be broken down into various modules. Target activate part of the configuration depending on the system (e.g. NixOS, wsl with hm, ...) and it's uses (e.g. home, cyber, work, ...=
       cowsay
       discord
       wget
+      curl
+      lynx
+      jq
+      tree
       hyfetch
       #fzf
+
+      steam
+
+      btop
     ];
 
   };
@@ -86,6 +94,8 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
