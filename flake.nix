@@ -10,7 +10,7 @@
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -44,10 +44,10 @@
     overlays = import ./overlays {inherit inputs;};
     # Reusable nixos modules you might want to export
     # These are usually stuff you would upstream into nixpkgs
-    nixosModules = import ./modules/nixos;
+    #nixosModules = import ./modules/nixos; # Might be useless
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
-    #homeManagerModules = import ./modules/home-manager; # Useless and bearking flake if empty
+    #homeManagerModules = import ./modules/home-manager; # Useless and breaking flake if empty
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname' #Should it be the hostname or just a key?
