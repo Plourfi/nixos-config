@@ -76,13 +76,14 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    eza
+    #eza
     git
     obsidian
     discord
     protonvpn-gui
     nh
     nix-output-monitor
+    nvd
   ];
 
 #  programs.nh = {
