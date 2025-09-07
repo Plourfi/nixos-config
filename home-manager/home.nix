@@ -22,11 +22,11 @@
 
   nixpkgs = {
     # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      (import ../../outputs.overlays.additions.nix)
-      (import ../../outputs.overlays.modifications.nix)
-      (import ../../outputs.overlays.unstable-packages.nix)
+    #overlays = [
+      ## Add overlays your own flake exports (from overlays and pkgs dir):
+      #(import ../../outputs.overlays.additions.nix)
+      #(import ../../outputs.overlays.modifications.nix)
+      #(import ../../outputs.overlays.unstable-packages.nix)
       
       #outputs.overlays.additions
       #outputs.overlays.modifications
@@ -41,7 +41,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    ];
+    #];
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -54,7 +54,29 @@
     username = "astrea";
     homeDirectory = "/home/astrea";
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "23.11";
+    stateVersion = "25.05";
+    packages = with pkgs; [
+      cowsay
+      discord
+      wget
+      hyfetch
+      #fzf
+    ];
+
+  };
+  programs.eza = {
+    enable = true;
+    #icons = "auto";
+    icons = "always";
+    colors = "auto";
+  };
+
+  programs.fzf = {
+    enable = true;
+  };
+
+  programs.bash = {
+    enable = true;
   };
 
   # Add stuff for your user as you see fit:
@@ -68,3 +90,4 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }
+
