@@ -1,3 +1,4 @@
+*Obsidian's MD flavour*
 # Debugging
 
 ## FLakes
@@ -8,7 +9,7 @@ Show the outputs provided by a flake :
 nix flake show --all-systems
 ```
 
-> [!NOTE] - Result
+> [!NOTE]- Result
 > ```shell
 > nix flake show --all-systems
 > warning: Git tree '/home/astrea/nixos-config' is dirty
@@ -34,7 +35,7 @@ Check for flake errors :
 nix flake check --show-trace
 ```
 
-> [!NOTE] Results
+> [!NOTE]- Results
 > ```shell
 > [astrea@nixtrea:~/nixos-config]$ nix flake check --all-systems 
 > warning: Git tree '/home/astrea/nixos-config' is dirty
