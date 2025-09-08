@@ -68,20 +68,20 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
+    "electron-25.9.0" # Obsidian dependancy
   ];
 
 
   # Install some basic system packages
   environment.systemPackages = with pkgs; [
-    vim
-    wget
+    vim # Learn it someday ¯\_(ツ)_/¯ 
+    wget # trm > hm
     #eza
-    git
-    obsidian
-    discord
-    protonvpn-gui
-    nh
+    git # to remove, already present in home manager
+    obsidian # move to hm
+    # discord
+    protonvpn-gui # mv to hm
+    nh # nix updater next gen
     nix-output-monitor
     nvd
   ];
@@ -102,7 +102,7 @@
 
   # Install nerd fonts
   fonts.packages = with pkgs; [
-    #nerd-fonts for eza icons
+    # nerd-fonts for eza icons
     nerd-fonts.fira-code #nerd-fonts
     nerd-fonts.hack #nerd-fonts
     nerd-fonts.droid-sans-mono #nerd-fonts
