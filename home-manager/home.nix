@@ -65,6 +65,7 @@
       tree # File listing in a tree representation
       hyfetch # Sys ressources
       btop # Sys ressources
+      lf
 
       #fzf # Better history command # present below in programs.fzf 
       #eza # Better ls with icons, needs fonts (nerd-fonts installed in nix config) # present below
