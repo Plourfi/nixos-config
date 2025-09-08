@@ -60,7 +60,7 @@
       cowsay # Test pkgs
       wget # Url fetching
       curl # Url fetching
-      lynx # Light web browsing
+      lynx # Light web browser
       jq # 
       tree # File listing in a tree representation
       hyfetch # Sys ressources
