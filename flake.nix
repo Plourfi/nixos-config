@@ -52,14 +52,22 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname' #Should it be the hostname or just a key?
     nixosConfigurations = {
-      # hostname
-      nixtrea = nixpkgs.lib.nixosSystem {
+      # hostname or conf name
+      aspire3 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          # > Our main nixos configuration file <
           ./aspire3/configuration.nix
         ];
       };
+
+      yoga = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./yoga/configuration.nix
+        ];
+      };
+
+
     };
 
     # Standalone home-manager configuration entrypoint
