@@ -122,10 +122,11 @@
   system.stateVersion = "25.05";
 
 
+# Might slow boot time by 1.5 minute
  # Enable 16Go of swap memory
  # Should be required/is better for rebuild system
-  swapDevices = [{
-    device = "/swapfile";
-    size = 16 * 1024; # 16GB
-  }];
+#  swapDevices = [{
+#    device = "/swapfile";
+#    size = 16 * 1024; # 16GB
+#  }];
 }
