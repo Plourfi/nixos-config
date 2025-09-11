@@ -106,14 +106,16 @@
     nerd-fonts.droid-sans-mono #nerd-fonts
   ];
 
+# To check
   systemd.services.NetworkManager-wait-online.enable = false; # Mayber fix the wait time for networking componnents when booting
 
-  #virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
   #virtualisation.docker.rootless = {
   #  enable = true;
   #  setSocketVariable = true;
   #};
 
+# To check
 # https://discourse.nixos.org/t/wifi-stops-working-requiring-a-reboot/48940/7
   hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares 
 
