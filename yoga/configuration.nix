@@ -94,8 +94,6 @@
 #  };
 
 
-
-
   # Enable fontconfig if necessary (optional)
   fonts.fontconfig.enable = true;
   # fonts.fontconfig.defaultFonts.emoji = [ "nerd-fonts" ];
@@ -108,12 +106,15 @@
     nerd-fonts.droid-sans-mono #nerd-fonts
   ];
 
+  systemd.services.NetworkManager-wait-online.enable = false; 
 
   virtualisation.docker.enable = true;
   #virtualisation.docker.rootless = {
   #  enable = true;
   #  setSocketVariable = true;
   #};
+
+  hardware.enableRedistributableFirmware = true ;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Set the system state version
