@@ -114,7 +114,8 @@
   #  setSocketVariable = true;
   #};
 
-  hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares
+# https://discourse.nixos.org/t/wifi-stops-working-requiring-a-reboot/48940/7
+  hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Set the system state version
