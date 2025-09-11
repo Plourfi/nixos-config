@@ -106,7 +106,7 @@
     nerd-fonts.droid-sans-mono #nerd-fonts
   ];
 
-  systemd.services.NetworkManager-wait-online.enable = false; 
+  systemd.services.NetworkManager-wait-online.enable = false; # Mayber fix the wait time for networking componnents when booting
 
   virtualisation.docker.enable = true;
   #virtualisation.docker.rootless = {
@@ -114,7 +114,7 @@
   #  setSocketVariable = true;
   #};
 
-  hardware.enableRedistributableFirmware = true ;
+  hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Set the system state version
