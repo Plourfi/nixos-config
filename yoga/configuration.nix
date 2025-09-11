@@ -59,7 +59,7 @@
   users.users.astrea = {
     isNormalUser = true;
     description = "astrea";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   # Install firefox
@@ -109,7 +109,11 @@
   ];
 
 
-
+  virtualisation.docker.enable = true;
+  #virtualisation.docker.rootless = {
+  #  enable = true;
+  #  setSocketVariable = true;
+  #};
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Set the system state version
