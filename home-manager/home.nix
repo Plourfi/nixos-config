@@ -75,6 +75,7 @@
 
       # Softwares
       discord
+      vencord
       steam
       # friture # RT audio analyzer with spectrum
     ];
