@@ -56,7 +56,7 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "25.05";
     packages = with pkgs; [ # Needs to be broken down into various modules. Target activate part of the configuration depending on the system (e.g. NixOS, wsl with hm, ...) and it's uses (e.g. home, cyber, work, ...=
-      # CLI tools
+# CLI tools
       cowsay # Test pkgs
       wget # Url fetching
       curl # Url fetching
@@ -67,7 +67,7 @@
       btop # Sys ressources
       lf
 
-      # Offensive security
+# Offensive security
        # Network
       nmap
       #telnet
@@ -79,14 +79,18 @@
       # zhs
 
 
-      # Softwares
+# Softwares
 
-# https://nixos.wiki/wiki/Discord
+      # https://nixos.wiki/wiki/Discord
       (discord.override {
       # withOpenASAR = true; # can do this here too
         withVencord = true;
       })
       #discord #vencord # vesktop
+
+      # thunderbird
+      thunderbird
+
 
       steam
       # friture # RT audio analyzer with spectrum
