@@ -94,6 +94,15 @@
 #  };
 
 
+  # Ollama as a systemd service:
+  # https://fictionbecomesfact.com/notes/nixos-ollama-oterm-openwebui/
+  services.ollama = {
+    enable = true;
+    loadModels = [ "deepseek-r1:1.5b" "gemma3:270m" "llama3.1:8b" "deepseek-r1:14b" "gpt-oss:20b" "gemma3:12b" "gemma3:4b" ];
+  };
+
+
+
   # Enable fontconfig if necessary (optional)
   fonts.fontconfig.enable = true;
   # fonts.fontconfig.defaultFonts.emoji = [ "nerd-fonts" ];
