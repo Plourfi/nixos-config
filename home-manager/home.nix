@@ -67,15 +67,25 @@
       btop # Sys ressources
       lf
 
+      # Offensive security
+       # Network
+      nmap
+      #telnet
+
       #fzf # Better history command # present below in programs.fzf 
       #eza # Better ls with icons, needs fonts (nerd-fonts installed in nix config) # present below
 
       # Shell
       # zhs
 
+
       # Softwares
-      discord
-      vencord
+      (discord.override {
+      # withOpenASAR = true; # can do this here too
+        withVencord = true;
+      })
+      #discord #vencord # vesktop
+
       steam
       # friture # RT audio analyzer with spectrum
     ];
