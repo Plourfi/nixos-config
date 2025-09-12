@@ -80,6 +80,8 @@
 
 
       # Softwares
+
+# https://nixos.wiki/wiki/Discord
       (discord.override {
       # withOpenASAR = true; # can do this here too
         withVencord = true;
