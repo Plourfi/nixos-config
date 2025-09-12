@@ -81,6 +81,13 @@
 
 # Softwares
 
+      # Ollama as a systemd service:
+      # https://fictionbecomesfact.com/notes/nixos-ollama-oterm-openwebui/
+      services.ollama = {
+        enable = true;
+        loadModels = [ "llama3.1:8b" "deepseek-r1:14b" "gpt-oss:20b" "gemma3:12b" "gemma3:4b"];
+      };
+
       # https://nixos.wiki/wiki/Discord
       (discord.override {
       # withOpenASAR = true; # can do this here too
