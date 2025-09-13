@@ -11,7 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "iwlwifi" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
 
   networking.hostName = "nixtrea"; # Define your hostname.
   networking.networkmanager.enable = true;
