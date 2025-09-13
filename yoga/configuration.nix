@@ -66,7 +66,7 @@
   programs.firefox.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true; # Would this override the next line?
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0" # Obsidian dependancy
   ];
@@ -124,9 +124,12 @@
   #  setSocketVariable = true;
   #};
 
+
 # To check
 # https://discourse.nixos.org/t/wifi-stops-working-requiring-a-reboot/48940/7
   hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares 
+  hardware.enableAllFirmware = true ; # Maybe fix boot time by using licensed firmwares 
+
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Set the system state version
