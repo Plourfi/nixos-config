@@ -20,5 +20,5 @@ NixOS update:
 nh os switch .#nixosConfigurations.yoga
 
 hm update:
-nh hm switch .#homeConfigurations."astrea@nixtrea".activationPackage
+nh home switch .#homeConfigurations."astrea@nixtrea".activationPackage
 
