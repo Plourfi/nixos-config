@@ -135,6 +135,7 @@
   # Set the system state version
   system.stateVersion = "25.05";
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
 # Might slow boot time by 1.5 minute
  # Enable 16Go of swap memory
