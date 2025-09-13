@@ -10,6 +10,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "iwlwifi" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
 
   networking.hostName = "nixtrea"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -135,8 +137,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Set the system state version
   system.stateVersion = "25.05";
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
 # Might slow boot time by 1.5 minute
  # Enable 16Go of swap memory
