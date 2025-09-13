@@ -64,7 +64,11 @@
       tree # File listing in a tree representation
       hyfetch # Sys ressources
       btop # Sys ressources
-      lf
+      lf # CLI file browser
+      lshw
+      pciutils
+
+
       # Network analyzers
       # https://snapshooter.com/learn/check-network-usage--linux
       iftop
