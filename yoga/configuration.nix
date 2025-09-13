@@ -9,6 +9,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelModules = [ "iwlwifi" ];
 
   networking.hostName = "nixtrea"; # Define your hostname.
   networking.networkmanager.enable = true;
