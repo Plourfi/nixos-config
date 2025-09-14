@@ -37,4 +37,23 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # 1. Copy the patch to the system's firmware directory.
+  #    This ensures the patch is available to the kernel at boot.
+  hardware.firmware = [
+    (pkgs.runCommandNoCC "legion-audio-patch" {} ''
+      mkdir -p $out/lib/firmware
+      # Make sure the path to the patch is correct!
+      # The path './legion-alc287.patch' assumes the patch is
+      # in the same directory as this .nix file.
+#      cp ./modules/nixos/legion-alc287.patch $out/lib/firmware/legion-alc287.patch
+      cp /home/astrea/nixos-config/modules/nixos/legion-alc287.patch $out/lib/firmware/legion-alc287.patch
+    '')
+  ];
+
+  # 2. Instruct the 'snd_hda_intel' kernel module to use the patch.
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel patch=legion-alc287.patch
+  '';
+# https://gist.github.com/felipelalli/6179aac72735fd35ea3a9854beb490e5
 }
