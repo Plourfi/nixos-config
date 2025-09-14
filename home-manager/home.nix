@@ -95,12 +95,14 @@
       })
       #discord #vencord # vesktop
 
-      # thunderbird
+      # Email
       thunderbird
 
-
+      # Gaming
       steam
-      # friture # RT audio analyzer with spectrum
+
+      # Audio
+      friture # RT audio analyzer with spectrum
     ];
 
   };
@@ -125,11 +127,10 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git.enable = true; # Add git config [ #EDIT ]
 
 
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }
-
