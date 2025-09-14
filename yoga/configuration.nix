@@ -131,7 +131,7 @@
 # To check
 # https://discourse.nixos.org/t/wifi-stops-working-requiring-a-reboot/48940/7
   hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares 
-  hardware.enableAllFirmware = true ; # Maybe fix boot time by using licensed firmwares 
+  hardware.enableAllFirmware = true ; # Maybe fix boot time by using licensed firmwares # Onlys this setting should suffice
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
