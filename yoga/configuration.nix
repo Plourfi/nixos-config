@@ -9,9 +9,9 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelModules = [ "iwlwifi" ];
+  boot.kernelModules = [ "iwlwifi" ]; # Error -110 if not used and not powercycled?
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
+  #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16; # Check if using a pre-rel version would help correct iwlwifi issues
 
   networking.hostName = "nixtrea"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -62,7 +62,7 @@
   users.users.astrea = {
     isNormalUser = true;
     description = "astrea";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ]; # "docker" group to execute docker or docker rootless?
   };
 
   # Install firefox
@@ -70,7 +70,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true; # Would this override the next line?
-  nixpkgs.config.permittedInsecurePackages = [
+  nixpkgs.config.permittedInsecurePackages = [ # Move to [ #HM ]?
     "electron-25.9.0" # Obsidian dependancy
   ];
 
@@ -78,21 +78,19 @@
   # Install some basic system packages
   environment.systemPackages = with pkgs; [
     vim # Learn it someday ¯\_(ツ)_/¯ 
-    wget # trm > hm
-    #eza
-    git # to remove, already present in home manager
-    obsidian # move to hm
-    # discord
-    protonvpn-gui # mv to hm
+    wget # trm > [ #HM ]
+    git # to remove, already present in [ HM ]
+    obsidian # move to [ #HM ]
+    protonvpn-gui # mv to [ #HM ]
     nh # nix updater next gen
-    nix-output-monitor
+    nix-output-monitor # Show live builds
     nvd
   ];
 
 #  programs.nh = {
 #    enable = true;
 #    clean.enable = true;
-#    clean.extraArgs = "--keep-since 4d --keep 3";
+#    clean.extraArgs = "--keep-since 4d --keep 3"; # Automatically gc (garbage collect) old generations
 #    flake = "/home/user/my-nixos-config"; # sets NH_OS_FLAKE variable for you
 #  };
 
@@ -101,9 +99,10 @@
   # https://fictionbecomesfact.com/notes/nixos-ollama-oterm-openwebui/
   services.ollama = {
     enable = true;
+# Automatically download these models [ #MODULARIZE ], need to be modularized, each model download takes lot of space and bandwidth
+# Check with: $ systemctl status ollama ollama-model-loader.service
     loadModels = [ "deepseek-r1:1.5b" "gemma3:270m" "llama3.1:8b" "deepseek-r1:14b" "gpt-oss:20b" "gemma3:12b" "gemma3:4b" ];
   };
-
 
 
   # Enable fontconfig if necessary (optional)
@@ -112,7 +111,7 @@
 
   # Install nerd fonts
   fonts.packages = with pkgs; [
-    # nerd-fonts for eza icons
+    # nerd-fonts necessary for eza icons:
     nerd-fonts.fira-code #nerd-fonts
     nerd-fonts.hack #nerd-fonts
     nerd-fonts.droid-sans-mono #nerd-fonts
@@ -130,8 +129,8 @@
 
 # To check
 # https://discourse.nixos.org/t/wifi-stops-working-requiring-a-reboot/48940/7
-  hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares 
-  hardware.enableAllFirmware = true ; # Maybe fix boot time by using licensed firmwares # Onlys this setting should suffice
+  hardware.enableRedistributableFirmware = true ; # Maybe fix boot time by using licensed firmwares [ #REDUNDANT ], next setting is more permissive
+  hardware.enableAllFirmware = true ; # Maybe fix boot time by using licensed firmwares # Only this setting should suffice
 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
