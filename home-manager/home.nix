@@ -67,7 +67,7 @@
       lf # CLI file browser
       lshw
       pciutils
-
+      graphviz
 
       # Network analyzers
       # https://snapshooter.com/learn/check-network-usage--linux
