@@ -5,7 +5,7 @@
 Non exaustive tasklist:
 
 - [ ] Add desktop environment
-- [ ] Add various entries for differents systems and u9ser environments
+- [ ] Add various entries for differents systems and user environments
 	- [ ] Modularize home manager config # https://www.youtube.com/watch?v=vYc6IzKvAJQ
 	- [ ] Possibility of creating an interacting flake
 - [ ] Change default shell
@@ -20,8 +20,12 @@ Non exaustive tasklist:
 # Command
 
 NixOS update:
+```shell
 nh os switch .#nixosConfigurations.yoga
+```
 
 hm update:
-nh home switch .#homeConfigurations."astrea".activationPackage
 
+```shell
+nh home switch .#homeConfigurations."astrea".activationPackage
+```
