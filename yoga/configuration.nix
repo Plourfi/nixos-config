@@ -2,17 +2,18 @@
 
 {
 
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_16.override {
-    argsOverride = rec {
-      src = pkgs.fetchurl {
-            url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-            sha256 = "sha256-IxMRvXCE3DEplE0mu0O+b/g32oL7IQSmdwSuvKi/pp8=";
-#            sha256 = "sha256-231311bd7084dc3129944d26bb43be6ff837da82fb2104a67704aebca8bfa69f";
-      };
-      version = "6.16.8";
-      modDirVersion = "6.16.8";
-      };
-  });
+#  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_16.override {
+#    argsOverride = rec {
+#      src = pkgs.fetchurl {
+#            #sha256 = "sha256-IxMRvXCE3DEplE0mu0O+b/g32oL7IQSmdwSuvKi/pp8=";
+#            sha256 = "sha256-7nZQmWunWqKf5m8wm0Ewl/JJoD5wAfKkESjHyVIFImo=";
+#            url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+##            sha256 = "sha256-231311bd7084dc3129944d26bb43be6ff837da82fb2104a67704aebca8bfa69f";
+#      };
+#      version = "6.16.9";
+#      modDirVersion = "6.16.9";
+#      };
+#  });
 
 
 
@@ -26,6 +27,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "iwlwifi" ]; # Error -110 if not used and not powercycled?
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 #  boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16; # Check if using a pre-rel version would help correct iwlwifi issues
 
