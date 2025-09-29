@@ -54,9 +54,12 @@
   };
 
   # Enable the X11 windowing system and GNOME.
+#  services.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+#  services.xserver.displayManager.gdm.enable = true;
+#  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11 and console
   services.xserver.xkb = {
@@ -105,6 +108,7 @@
     nh # nix updater next gen
     nix-output-monitor # Show live builds
     nvd
+    python3
   ];
 
 #  programs.nh = {
