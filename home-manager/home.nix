@@ -68,6 +68,7 @@
       lshw
       pciutils
       graphviz
+      glow # Render markdown in CLI
 
       # Network analyzers
       # https://snapshooter.com/learn/check-network-usage--linux
