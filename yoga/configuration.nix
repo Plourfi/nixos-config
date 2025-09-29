@@ -26,10 +26,12 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelModules = [ "iwlwifi" ]; # Error -110 if not used and not powercycled?
+#  boot.kernelModules = [ "iwlwifi" ]; # Error -110 if not used and not powercycled?
   boot.kernelPackages = pkgs.linuxPackages_testing;
 #  boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16; # Check if using a pre-rel version would help correct iwlwifi issues
+  virtualisation.docker.enableOnBoot = false; # Disable Docker on boot to get faster boot time
+
 
   networking.hostName = "nixtrea"; # Define your hostname.
   networking.networkmanager.enable = true;
