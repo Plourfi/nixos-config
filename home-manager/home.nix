@@ -55,55 +55,64 @@
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "25.05";
     packages = with pkgs; [ # Needs to be broken down into various modules. Target activate part of the configuration depending on the system (e.g. NixOS, wsl with hm, ...) and it's uses (e.g. home, cyber, work, ...=
+
+# Shell
+      # zhs
+
 # CLI tools
-      cowsay # Test pkgs
+      cowsay # Test package
+ # Tools and tools replacement
+      #fzf # Better history command # present below in programs.fzf 
+      #eza # Better ls with icons, needs fonts (nerd-fonts installed in nix config) # present below
+      tree # File listing in a tree representation
+      lf # CLI file browser
+      # bat to replace cat?
+      glow # Render markdown in CLI
+      # Check is still usefull:
+      graphviz # Visualization software. Used for commands such as `systemd-analyze plot > file.svg` to create images
+
+
+ # Debug tools
       wget # Url fetching
       curl # Url fetching
       lynx # Light web browser
-      jq # 
-      tree # File listing in a tree representation
+      jq # Json parser
+
+# Hardware / System
       hyfetch # Sys ressources
       btop # Sys ressources
-      lf # CLI file browser
-      lshw
-      pciutils
-      graphviz
-      glow # Render markdown in CLI
+      lshw # Hardware lister
+      pciutils # Give access to `lspci,` `pcilmr`, and, `setpci` cli tools and `lspci.so` library for programs to access PCI subsytems
 
-      # Network analyzers
+
+
+# Network analyzers
       # https://snapshooter.com/learn/check-network-usage--linux
       iftop
       nethogs
+      tcpdump
 
 # Offensive security
-       # Network
+  # Network
       nmap
-      #telnet
-
-      #fzf # Better history command # present below in programs.fzf 
-      #eza # Better ls with icons, needs fonts (nerd-fonts installed in nix config) # present below
-
-      # Shell
-      # zhs
-
 
 # Softwares
-
-      # https://nixos.wiki/wiki/Discord
       (discord.override {
       # withOpenASAR = true; # can do this here too
         withVencord = true;
       })
-      #discord #vencord # vesktop
+      # https://nixos.wiki/wiki/Discord
+      # Check the following packages: discord #vencord # vesktop
 
       # Email
       thunderbird
 
       # Gaming
-      steam
+      steam # No workie
 
       # Audio
       friture # RT audio analyzer with spectrum
+      # audacity
     ];
 
   };
