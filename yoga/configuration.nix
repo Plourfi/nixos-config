@@ -101,7 +101,6 @@
   # Install some basic system packages
   environment.systemPackages = with pkgs; [
     vim # Learn it someday ¯\_(ツ)_/¯ 
-    wget # trm > [ #HM ]
     git # to remove, already present in [ HM ]
     obsidian # move to [ #HM ]
     protonvpn-gui # mv to [ #HM ]
@@ -117,6 +116,10 @@
 #    clean.extraArgs = "--keep-since 4d --keep 3"; # Automatically gc (garbage collect) old generations
 #    flake = "/home/user/my-nixos-config"; # sets NH_OS_FLAKE variable for you
 #  };
+
+  programs.zsh.enable = true;
+  users.users.astrea.shell = pkgs.zsh;
+
 
 
   # Ollama as a systemd service:
