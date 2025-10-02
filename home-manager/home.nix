@@ -84,8 +84,6 @@
       lshw # Hardware lister
       pciutils # Give access to `lspci,` `pcilmr`, and, `setpci` cli tools and `lspci.so` library for programs to access PCI subsytems
 
-
-
 # Network analyzers
       # https://snapshooter.com/learn/check-network-usage--linux
       iftop
@@ -113,6 +111,8 @@
       # Audio
       friture # RT audio analyzer with spectrum
       # audacity
+
+      # vlc
     ];
 
   };
@@ -123,13 +123,60 @@
     colors = "auto";
   };
 
-  programs.fzf = { # Check why it would be better to declare this program here or above and what are the implications of a double entry in home.packages
-    enable = true;
-  };
+#  programs.fzf = { # Check why it would be better to declare this program here or above and what are the implications of a double entry in home.packages
+#    enable = true;
+#  };
 
   programs.bash = { # Verify usefullness especially with another terminal
     enable = true;
   };
+
+
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+#    useTheme = "M365Princess.json";
+    useTheme = "M365Princess.omp.json";
+  #  settings = "./config/ohmyposh/zen.toml";
+  };
+
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+#  programs.zsh = {
+#    enable = true;
+#    enableCompletion = true;
+#    autosuggestion.enable = true;
+#    syntaxHighlighting.enable = true;
+#  };
+
+#  programs.zsh.plugins = [
+#      {
+#        name = "fzf-tab";
+#        src = pkgs.fetchFromGitHub {
+#          owner = "Aloxaf";
+#          repo = "fzf-tab";
+#          rev = "c2b4aa5ad2532cca91f23908ac7f00efb7ff09c9";
+#          sha256 = "1b4pksrc573aklk71dn2zikiymsvq19bgvamrdffpf7azpq6kxl2";
+#        };
+#      }
+#    ];
+
+  programs.zsh.plugins = [
+    {
+      name = "fzf-tab";
+      src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+    }
+  ];
+
+
+  #programs.zsh.initContent = ''
+  #    source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+  #'';
+
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
