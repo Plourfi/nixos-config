@@ -33,6 +33,19 @@
   virtualisation.docker.enableOnBoot = false; # Disable Docker on boot to get faster boot time
 
 
+# virtualization
+##  virtualisation.virtualbox.host.enable = true;
+##  virtualisation.virtualbox.guest.enable = true;
+##  virtualisation.virtualbox.guest.dragAndDrop = true;
+##  users.extraGroups.vboxusers.members = [ "astrea" ];
+##  virtualisation.virtualbox.host.enableHardening = false;
+
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["astrea"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+
   networking.hostName = "nixtrea"; # Define your hostname.
   networking.networkmanager.enable = true;
 
@@ -104,10 +117,16 @@
     git # to remove, already present in [ HM ]
     obsidian # move to [ #HM ]
     protonvpn-gui # mv to [ #HM ]
+    protonmail-desktop # mv to [ #HM ]
     nh # nix updater next gen
     nix-output-monitor # Show live builds
     nvd
     python3
+#    virtualbox
+    #wine-stagging.overrideAttrs { version = ...; src = ...; }
+
+    wireshark
+    vscode
   ];
 
 #  programs.nh = {
