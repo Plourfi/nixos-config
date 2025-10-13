@@ -56,6 +56,7 @@
     stateVersion = "25.05";
     packages = with pkgs; [ # Needs to be broken down into various modules. Target activate part of the configuration depending on the system (e.g. NixOS, wsl with hm, ...) and it's uses (e.g. home, cyber, work, ...=
 
+      vscode # IDE
 # Shell
       # zhs
 
@@ -77,6 +78,7 @@
       curl # Url fetching
       lynx # Light web browser
       jq # Json parser
+      toybox # Unix tools
 
 # Hardware / System
       hyfetch # Sys ressources
@@ -93,6 +95,7 @@
 # Offensive security
   # Network
       nmap
+      p0f # Get Scapy CLI and more
 
 # Softwares
       (discord.override {
@@ -134,7 +137,7 @@
 
   programs.oh-my-posh = {
     enable = true;
-    enableZshIntegration = true;
+#    enableZshIntegration = true;
 #    useTheme = "M365Princess.json";
     useTheme = "M365Princess.omp.json";
   #  settings = "./config/ohmyposh/zen.toml";
@@ -143,9 +146,10 @@
 
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
+ #   enableZshIntegration = true;
   };
 
+#  programs.zsh.enable = true;
 #  programs.zsh = {
 #    enable = true;
 #    enableCompletion = true;
@@ -165,12 +169,12 @@
 #      }
 #    ];
 
-  programs.zsh.plugins = [
-    {
-      name = "fzf-tab";
-      src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-    }
-  ];
+#  programs.zsh.plugins = [
+#    {
+#      name = "fzf-tab";
+#      src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+#    }
+#  ];
 
 
   #programs.zsh.initContent = ''
