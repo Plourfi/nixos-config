@@ -1,5 +1,17 @@
 { config, pkgs, ... }:
 
+
+#let
+#  pkgs = import (builtins.fetchGit {
+#    # Descriptive name to make the store path easier to identify
+#    name = "my-old-revision";
+#    url = "https://github.com/NixOS/nixpkgs/";
+#    ref = "refs/heads/nixpkgs-unstable";
+#    rev = "e6f23dc08d3624daab7094b701aa3954923c6bbb";
+#  }) {};
+#  myPkg = pkgs.virtualbox;
+#in
+
 {
 
 #  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_16.override {
@@ -124,10 +136,16 @@
     python3
 #    virtualbox
     #wine-stagging.overrideAttrs { version = ...; src = ...; }
+    networkmanagerapplet
+    qemu
+    qemu_kvm
+    OVMF
+
 
     wireshark
     vscode
   ];
+
 
 #  programs.nh = {
 #    enable = true;
