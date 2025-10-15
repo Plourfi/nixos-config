@@ -57,6 +57,8 @@
     packages = with pkgs; [ # Needs to be broken down into various modules. Target activate part of the configuration depending on the system (e.g. NixOS, wsl with hm, ...) and it's uses (e.g. home, cyber, work, ...=
 
       vscode # IDE
+     # devenv # To check
+
 # Shell
       # zhs
 
@@ -73,6 +75,7 @@
       graphviz # Visualization software. Used for commands such as `systemd-analyze plot > file.svg` to create images
 
 
+     # cabal2nix # Used in Python devenv
  # Debug tools
       wget # Url fetching
       curl # Url fetching
