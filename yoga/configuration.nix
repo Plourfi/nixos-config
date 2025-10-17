@@ -46,11 +46,11 @@
 
 
 # virtualization
-##  virtualisation.virtualbox.host.enable = true;
-##  virtualisation.virtualbox.guest.enable = true;
-##  virtualisation.virtualbox.guest.dragAndDrop = true;
-##  users.extraGroups.vboxusers.members = [ "astrea" ];
-##  virtualisation.virtualbox.host.enableHardening = false;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.dragAndDrop = true;
+  users.extraGroups.vboxusers.members = [ "astrea" ];
+  virtualisation.virtualbox.host.enableHardening = false;
 
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["astrea"];
@@ -134,14 +134,15 @@
     nix-output-monitor # Show live builds
     nvd
     python3
-#    virtualbox
+    virtualbox
     #wine-stagging.overrideAttrs { version = ...; src = ...; }
     networkmanagerapplet
     qemu
     qemu_kvm
     OVMF
 
-
+    openvpn
+    openvpn3
     wireshark
     vscode
   ];
