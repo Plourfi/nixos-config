@@ -7,15 +7,17 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+#    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
 #    home-manager.url = "github:nix-community/home-manager/release-25.05";
 
 
-#    home-manager.url = "github:nix-community/home-manager/c75fd8e300b79502b8eecdacd8a426b12fadb460";
-    home-manager.url = "github:nix-community/home-manager/b72be79a42d470e4bafb5348dc62df484b6baab3";
+
+    home-manager.url = "github:nix-community/home-manager/4958aafe7b237dc1e857fb0c916efff72075048f";
+#    home-manager.url = "github:nix-community/home-manager/b72be79a42d470e4bafb5348dc62df484b6baab3";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
