@@ -16,8 +16,8 @@
 
 
 
-    home-manager.url = "github:nix-community/home-manager/37a3d97f2873e0f68711117c34d04b7c7ead8f4e";
-#    home-manager.url = "github:nix-community/home-manager/b72be79a42d470e4bafb5348dc62df484b6baab3";
+    home-manager.url = "github:nix-community/home-manager";
+#    home-manager.url = "github:nix-community/home-manager/3670a78eee49deebe4825fc8ecc46b172d1a8391";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
