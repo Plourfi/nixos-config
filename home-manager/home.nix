@@ -112,7 +112,7 @@
       thunderbird
 
       # Gaming
-      steam # No workie
+      #steam # No workie
 
       # Audio
       friture # RT audio analyzer with spectrum
