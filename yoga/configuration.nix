@@ -47,7 +47,7 @@
 
 # virtualization
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.guest.enable = true;
+###  virtualisation.virtualbox.guest.enable = true; # Checking wether service restart is faster with this (when rebuilding)
   virtualisation.virtualbox.guest.dragAndDrop = true;
   users.extraGroups.vboxusers.members = [ "astrea" ];
   virtualisation.virtualbox.host.enableHardening = false;
@@ -147,6 +147,11 @@
     openvpn3
     wireshark
     vscode
+    
+    spotify
+    
+    kitty # for the wayland hyprland thingy
+
   ];
 
 
@@ -160,7 +165,11 @@
   programs.zsh.enable = true;
   users.users.astrea.shell = pkgs.zsh;
 
-
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true; # recommended for most users
+    xwayland.enable = true; # Xwayland can be disabled.
+  };
 
   # Ollama as a systemd service:
   # https://fictionbecomesfact.com/notes/nixos-ollama-oterm-openwebui/
