@@ -60,7 +60,7 @@
      # devenv # To check
 
 # Shell
-      # zhs
+      #zsh
 
 # CLI tools
       cowsay # Test package
