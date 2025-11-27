@@ -133,6 +133,23 @@
 #    enable = true;
 #  };
 
+
+  programs.zsh = {
+    enable = true;
+#    autosuggestion = {
+#      enable = true;
+#      highlight = "fg=#6f6c5d";
+#    };
+#    enableCompletion = true;
+#    enableZshIntegration = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+#    enableZshIntegration = true;
+  };
+
+
   programs.bash = { # Verify usefullness especially with another terminal
     enable = true;
   };
