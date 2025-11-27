@@ -142,15 +142,11 @@
     enable = true;
 #    enableZshIntegration = true;
 #    useTheme = "M365Princess.json";
-    useTheme = "M365Princess.omp.json";
-  #  settings = "./config/ohmyposh/zen.toml";
+    useTheme = "../hull10.omp.json";
+#    useTheme = "M365Princess.omp.json";
+#    settings = "./config/ohmyposh/zen.toml";
   };
 
-
-  programs.fzf = {
-    enable = true;
- #   enableZshIntegration = true;
-  };
 
 #  programs.zsh.enable = true;
 #  programs.zsh = {
