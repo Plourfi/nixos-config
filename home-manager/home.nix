@@ -81,7 +81,7 @@
       curl # Url fetching
       lynx # Light web browser
       jq # Json parser
-      toybox # Unix tools
+      toybox # Unix tools # https://landley.net/toybox/ # https://en.wikipedia.org/wiki/Toybox
 
 # Hardware / System
       hyfetch # Sys ressources
@@ -98,7 +98,7 @@
 # Offensive security
   # Network
       nmap
-      p0f # Get Scapy CLI and more
+      p0f # Get Scapy CLI and more # https://lcamtuf.coredump.cx/p0f3/
 
 # Softwares
       (discord.override {
@@ -134,16 +134,18 @@
 #  };
 
 
-  programs.zsh = {
-    enable = true;
+#  programs.zsh = {
+#    enable = true;
 #    autosuggestion = {
 #      enable = true;
 #      highlight = "fg=#6f6c5d";
 #    };
 #    enableCompletion = true;
 #    enableZshIntegration = true;
-  };
+#  };
 
+
+# https://github.com/Aloxaf/fzf-tab
   programs.fzf = {
     enable = true;
 #    enableZshIntegration = true;
@@ -155,11 +157,20 @@
   };
 
 
+# https://ohmyposh.dev/docs/installation/customize
+# https://ohmyposh.dev/docs/segments/cli/nix-shell
+# https://en.wikipedia.org/wiki/List_of_Unicode_characters
+
+#  programs.oh-my-posh.enable = true;
+#  programs.oh-my-posh.settings = builtins.readFile ../hul10.omp.json;
+
   programs.oh-my-posh = {
-    enable = true;
-#    enableZshIntegration = true;
-#    useTheme = "M365Princess.json";
-    useTheme = "../hull10.omp.json";
+    enable = false;
+##    enableZshIntegration = true;
+##    useTheme = "M365Princess.json";
+##    settings = builtins.readFile ./custom.omp.json;
+#    useTheme = "../try.omp.json";
+    useTheme = "../hul10.omp.json";
 #    useTheme = "M365Princess.omp.json";
 #    settings = "./config/ohmyposh/zen.toml";
   };
