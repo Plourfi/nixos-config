@@ -46,6 +46,11 @@
 
 
 # virtualization
+# https://www.reddit.com/r/NixOS/comments/177wcyi/best_way_to_run_a_vm_on_nixos/
+# https://nix.dev/tutorials/nixos/nixos-configuration-on-vm.html
+# https://nixos.wiki/wiki/VirtualBox
+# https://discourse.nixos.org/t/install-virtualbox-in-nixos/8796/6
+# https://github.com/meltingscales/dotfiles/blob/c8ec849871dc4c195fced89374a73ff3086eaa02/nix/etc/nixos/configuration.nix#L157
   virtualisation.virtualbox.host.enable = true;
 ###  virtualisation.virtualbox.guest.enable = true; # Checking wether service restart is faster with this (when rebuilding)
   virtualisation.virtualbox.guest.dragAndDrop = true;
