@@ -12,8 +12,8 @@
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
-#    home-manager.url = "github:nix-community/home-manager";
+#    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager";
 #    home-manager.url = "github:nix-community/home-manager/f47d2e382174a94bc073ffc537db85fc0feec607"; # 25.11 current stable version
 #    home-manager.url = "github:nix-community/home-manager/3670a78eee49deebe4825fc8ecc46b172d1a8391";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
