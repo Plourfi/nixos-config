@@ -119,6 +119,8 @@
       # audacity
 
       # vlc
+      drawio
+
     ];
 
   };
