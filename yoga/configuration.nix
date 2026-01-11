@@ -148,7 +148,7 @@
     qemu
     qemu_kvm
     OVMF
-
+    dmidecode # Bios information
     openvpn
     openvpn3
     wireshark
