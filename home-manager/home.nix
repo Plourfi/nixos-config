@@ -158,6 +158,11 @@
     enable = true;
   };
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
+
 
 # https://ohmyposh.dev/docs/installation/customize
 # https://ohmyposh.dev/docs/segments/cli/nix-shell
