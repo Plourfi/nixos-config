@@ -39,9 +39,61 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelModules = [ "iwlwifi" ]; # Error -110 if not used and not powercycled?
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  #boot.kernelPackages = pkgs.linuxPackages_testing;
 #  boot.kernelPackages = pkgs.linuxPackages_latest;
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16; # Check if using a pre-rel version would help correct iwlwifi issues
+
+
+	systemd.services.nixos-wifi-sleep-fix = {
+	  description = "Unload/Reload WiFi modules to prevent firmware crash";
+	  
+	  # Hook into the sleep process
+	  before = [ "sleep.target" ];
+	  wantedBy = [ "sleep.target" ];
+
+	  unitConfig = {
+	    # This ensures the 'Stop' command (ExecStop) runs when the system wakes up
+	    StopWhenUnneeded = "yes";
+	  };
+
+	  serviceConfig = {
+	    Type = "oneshot";
+	    RemainAfterExit = "yes";
+	    
+	    # WHAT TO DO BEFORE SLEEPING
+	    ExecStart = pkgs.writeShellScript "wifi-suspend.sh" ''
+	      # Kill NetworkManager briefly to release the driver
+	      ${pkgs.systemd}/bin/systemctl stop NetworkManager
+	      # Unload modules in reverse-dependency order
+	      ${pkgs.kmod}/bin/modprobe -r iwlmvm
+	      ${pkgs.kmod}/bin/modprobe -r iwlmld
+	      ${pkgs.kmod}/bin/modprobe -r iwlwifi
+	    '';
+
+	    # WHAT TO DO AFTER WAKING UP
+	    ExecStop = pkgs.writeShellScript "wifi-resume.sh" ''
+	      # Give the PCI bus a second to wake up
+	      sleep 2
+	      # The 'Magic Move' that worked for you in Step 4
+	      if [ -e /sys/bus/pci/devices/0000:01:00.0/remove ]; then
+		echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
+		sleep 1
+		echo 1 > /sys/bus/pci/rescan
+		sleep 1
+	      fi
+	      # Reload modules
+	      ${pkgs.kmod}/bin/modprobe iwlwifi
+	      ${pkgs.kmod}/bin/modprobe iwlmld
+	      ${pkgs.kmod}/bin/modprobe iwlmvm
+	      # Bring the network back
+	      ${pkgs.systemd}/bin/systemctl start NetworkManager
+	    '';
+	  };
+	};
+
+
+
+
   virtualisation.docker.enableOnBoot = false; # Disable Docker on boot to get faster boot time
 
 
@@ -51,12 +103,14 @@
 # https://nixos.wiki/wiki/VirtualBox
 # https://discourse.nixos.org/t/install-virtualbox-in-nixos/8796/6
 # https://github.com/meltingscales/dotfiles/blob/c8ec849871dc4c195fced89374a73ff3086eaa02/nix/etc/nixos/configuration.nix#L157
-  virtualisation.virtualbox.host.enable = false;
-#  virtualisation.virtualbox.host.enable = true;
+#  virtualisation.virtualbox.host.enable = false;
+  virtualisation.virtualbox.host.enable = true;
 ###  virtualisation.virtualbox.guest.enable = true; # Checking wether service restart is faster with this (when rebuilding)
   virtualisation.virtualbox.guest.dragAndDrop = true;
   users.extraGroups.vboxusers.members = [ "astrea" ];
   virtualisation.virtualbox.host.enableHardening = false;
+
+  virtualisation.vmware.host.enable = true;
 
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["astrea"];
@@ -131,9 +185,18 @@
   ];
 
 
+  services.tailscale.enable = true;
+
+
   # Install some basic system packages
   environment.systemPackages = with pkgs; [
-    vim # Learn it someday ¯\_(ツ)_/¯ 
+
+    nixpkgs-fmt # nixpkgs formatter
+    # nixfmt # new nixpkgs formatting
+    # alejandra # Readabl enixpkgs formatter
+
+
+    vim # Learn it someday ¯\_(ツ)_/¯ # Check relevancy w/ neovim
     git # to remove, already present in [ HM ]
     obsidian # move to [ #HM ]
     protonvpn-gui # mv to [ #HM ]
@@ -153,11 +216,15 @@
     openvpn3
     wireshark
     vscode
-    
+    nmap
+    zenmap
+
+
     spotify
     
     kitty # for the wayland hyprland thingy
 
+    rpi-imager
   ];
 
 

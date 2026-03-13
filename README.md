@@ -15,6 +15,8 @@ Non exaustive tasklist:
 - [ ] Break down the modules into categories eitheir for packages types (e.g. cli, gaming, etc.) or packages uses (e.g. home, work, schoole etc.)
 - [ ] Improve security
 	- [ ] Check `systemd-analyze security` relevancy
+- [ ] Win Apps
+- [ ] Rapi installer
 
 
 # Command
@@ -28,4 +30,13 @@ hm update:
 
 ```shell
 nh home switch .#homeConfigurations."astrea".activationPackage
+```
+
+
+```shell
+sudo modprobe -r iwlmvm iwlmld iwlwifi
+lsmod | grep iwl
+echo 1 | sudo tee /sys/bus/pci/devices/0000:01:00.0/remove
+echo 1 | sudo tee /sys/bus/pci/rescan
+sudo modprobe iwlwifi
 ```

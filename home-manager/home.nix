@@ -2,6 +2,7 @@
 {
 #  inputs,
 #  outputs,
+
 #  lib,
   config,
   pkgs,
@@ -18,6 +19,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
 #  ];
+  
 
   nixpkgs = {
     # You can add overlays here
@@ -64,7 +66,8 @@
 
 # CLI tools
       cowsay # Test package
- # Tools and tools replacement
+      tmux
+# Tools and tools replacement
       #fzf # Better history command # present below in programs.fzf 
       #eza # Better ls with icons, needs fonts (nerd-fonts installed in nix config) # present below
       tree # File listing in a tree representation
@@ -90,15 +93,18 @@
       pciutils # Give access to `lspci,` `pcilmr`, and, `setpci` cli tools and `lspci.so` library for programs to access PCI subsytems
 
 # Network analyzers
+
       # https://snapshooter.com/learn/check-network-usage--linux
       iftop
       nethogs
       tcpdump
 
+      vmware-workstation
 # Offensive security
   # Network
       nmap
       p0f # Get Scapy CLI and more # https://lcamtuf.coredump.cx/p0f3/
+      burpsuite
 
 # Softwares
       (discord.override {
@@ -158,10 +164,21 @@
     enable = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
+#  programs.neovim = {
+#    enable = true;
+#    defaultEditor = true;
+#  };
+
+#  programs.nvf = {
+#    enable = true;
+#    settings = {
+#      vim.theme.enable = true;
+#      vim.theme.name = "gruvbox";
+#      vim.theme.style = "dark";
+#
+#      vim.languages.nix.enable = true;
+#    };
+#  };
 
 
 # https://ohmyposh.dev/docs/installation/customize
